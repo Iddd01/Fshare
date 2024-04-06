@@ -1,0 +1,17 @@
+Private Sub DownloadVideoFromFshareTxt()
+    Dim objFshareService As FShareService
+    Dim objFileManager As FShareFileManager
+    Set objFshareService = New FShareService
+    With objFshareService
+        ' Khi chi dinh la TextFile thi nguoi dung can tao mot tap tin .txt chua thong tin dang nhap voi dinh dang nhu sau:
+        ' Dia chi email cua tai khoan, vd: abc@gmail.com
+        ' Mat khau, vd: "123456"
+        ' Ma AppKey: La ma AppKey trong email nhan duoc khi dang ky App Key tren Fshare API
+        ' Ma UserAgent: La ma UserAgent trong email nhan duoc khi dang ky App Key tren Fshare API
+        Set objFileManager = .Login(TextFile, "E:\Data\FShareLoginInfo.txt")
+        objFileManager.DownloadFile "https://www.fshare.vn/file/N38LZYKPKG9PI61", "E:\Data"
+        .LogOut
+    End With
+    Set objFshareService = Nothing
+    Set objFileManager = Nothing
+End Sub
