@@ -1,0 +1,18 @@
+Option Explicit
+
+Private Sub DownloadVideoFromFshare()
+    Dim objFshareService As FShareService
+    Dim objFileManager As FShareFileManager
+    Set objFshareService = New FShareService
+    With objFshareService
+        .UserEmail = "abc@gmail.com"
+        .Password = "123456"
+        .AppKey = "qwerty"
+        .UserAgent = "asdfg"
+        Set objFileManager = .Login(UserInput)
+        objFileManager.DownloadFile "https://www.fshare.vn/file/N38LZYKPKG9PI61", "E:\Data"
+        .LogOut
+    End With
+    Set objFshareService = Nothing
+    Set objFileManager = Nothing
+End Sub
